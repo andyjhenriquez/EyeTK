@@ -72,3 +72,6 @@ The Eye Interaction Toolkit is a unity package that provides functionality for e
  - All heatmap settings and configurations are within the GazeInteractionManager prefab
  - Enable Heatmap and configure settings accordingly
  - Mesh Based heatmap type automatically generates a heatmap for all gameobjects with a MeshRenderer component attatched, User Based creates a spherical heatmap around the user's gaze origin
+
+ ## Need help?
+ - Refer to the Demo Scene in the package for how things should be configured
