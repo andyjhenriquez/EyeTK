@@ -3,7 +3,8 @@ The Eye Interaction Toolkit is a unity package that provides functionality for e
 
 - *Complete XR Origin Set Up*: Provides camera and necessary components to enable gaze interactions through openXR
 - *Gaze Interaction Manager*: Main script that handles global settings, heatmap settings and generation, and more
-- *Interactable Canvas*: Prefab canvas that includes functionality for moving UI, and turning off and on UI or heatmap(s)
+- *Gaze Timer*: General prefab to add to objects or UI to enable gaze interactions
+- *Interactable Canvas*: Prefab example canvas that includes all functionality for moving UI, and turning off and on UI or heatmap(s)
 
 ## Getting Started
 
@@ -26,28 +27,28 @@ The Eye Interaction Toolkit is a unity package that provides functionality for e
         - Check Copy References
         - Click Switch Platform
   - (Unity Toolbar) File -> Build Settings For HoloLens 2 EMULATOR
-        - Click Add Open Scenes
-        - Switch Platform to Universal Windows Platform
-        - Target Device -> HoloLens
-        - Switch Architecture -> x64
-        - Switch Minimum Platform Version -> 10.0.10586.0 (known issues with other versions)
-        - Build and Run on -> Local Machine
-        - Check Devlopment Build
-        - Click Switch Platform
-    - (Unity Toolbar) Edit -> Project Settings
-        - Click XR Plug-in Management
-        - Click Universal Windows Platform settings tab
-        - Check OpenXR
-        - Check Microsoft HoloLens feature group
-        - Click the Warning Icon -> Click Fix All
-        - Click Windows, Mac, Linux XR Plug-in Management Settings tab
-        - Check OpenXR
-        - Check Microsoft HoloLens feature group
-        - Click the Warning Icon -> Click Fix All
-            - If left with “At least one interaction profile must be added.” -> Click on Edit
-                - (Project Settings -> OpenXR) Click the “+” under Interaction Profiles
-                - Add Eye Gaze Interaction Profile
-                - Add Microsoft Hand Interaction Profile
+    - Click Add Open Scenes
+    - Switch Platform to Universal Windows Platform
+    - Target Device -> HoloLens
+    - Switch Architecture -> x64
+    - Switch Minimum Platform Version -> 10.0.10586.0 (known issues with other versions)
+    - Build and Run on -> Local Machine
+     - Check Devlopment Build
+    - Click Switch Platform
+  - (Unity Toolbar) Edit -> Project Settings
+    - Click XR Plug-in Management
+    - Click Universal Windows Platform settings tab
+    - Check OpenXR
+    - Check Microsoft HoloLens feature group
+    - Click the Warning Icon -> Click Fix All
+    - Click Windows, Mac, Linux XR Plug-in Management Settings tab
+    - Check OpenXR
+    - Check Microsoft HoloLens feature group
+    - Click the Warning Icon -> Click Fix All
+      - If left with “At least one interaction profile must be added.” -> Click on Edit
+        - (Project Settings -> OpenXR) Click the “+” under Interaction Profiles
+          - Add Eye Gaze Interaction Profile
+            - Add Microsoft Hand Interaction Profile
     - (Unity Toolbar) Mixed Reality -> Project -> Apply recommended project settings for HoloLens 2
 
 
