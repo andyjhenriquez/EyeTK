@@ -9,54 +9,72 @@ The Eye Interaction Toolkit is a unity package that provides functionality for e
 ## Getting Started
 
 
-### 1. Configure a new Unity Project
-- Create a new project using Unity 2020. There are known issues building hololens 2 projects with Unity 2021 and 2022.
-- Install XR Interaction Toolkit Unity package, and XR Hands (if you will be using the hand tracking and gesture recognition)
-- Use the Microsoft Mixed Reality Feature Tool to add the MR OpenXRTool to the new project to enable openXR runtimes.
-    - Expand Platform Support -> Add Mixed Reality OpenXR Plugin to project -> change version to 15.1
-    - *NOTE [4/16/2024]*: use version 15.1, there are issues with the newer versions
-- Adjust the project and build settings as follow [(source)](http://www.lancelarsen.com/xr-step-by-step-2023-hololens-2-setting-up-your-project-in-unity-2022-mrtk-2-8-3-visual-studio-2022/):
+### 1. Install dependencies
+1. Create a new project using Unity 2020.3+. There are known issues building HoloLens 2 projects with Unity 2021 and 2022.
+1. Install Unity XR Interaction Toolkit: https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.2/manual/installation.html
+1. Once imported, select it under Package Manager, then under Samples, import Starter Assets
+1. If you will be using the hand tracking and gesture recognition, install Unity XR Hands package: https://docs.unity3d.com/Packages/com.unity.xr.hands@1.1/manual/project-setup/edit-your-project-manifest.html
+    - In the manifest, use version 1.1.0 at minimum
+1. Use the Microsoft Mixed Reality Feature Tool to add the MR OpenXRTool to the new project to enable openXR runtimes: https://www.microsoft.com/en-au/download/details.aspx?id=102778&msockid=320a09b4d58b6c842c3a1bb6d4e76d9d
+    - Expand Platform Support -> Add Mixed Reality OpenXR Plugin to project -> change version to 1.5.1
+    - *NOTE [4/16/2024]*: use version 1.5.1, there are issues with the newer versions
 
-    - (Unity Toolbar) File -> Build Settings For HoloLens 2
-        - Click Add Open Scenes
-        - Switch Platform to Universal Windows Platform
-        - Target Device -> HoloLens
-        - Switch Architecture -> ARM 64-bit
-        - Switch Minimum Platform Version -> 10.0.18362.0 (or newer)
-        - Build and Run on -> USB Device (if connected via USB)
-        - Check Copy References
-        - Click Switch Platform
-  - (Unity Toolbar) File -> Build Settings For HoloLens 2 EMULATOR
-    - Click Add Open Scenes
-    - Switch Platform to Universal Windows Platform
-    - Target Device -> HoloLens
-    - Switch Architecture -> x64
-    - Switch Minimum Platform Version -> 10.0.10586.0 (known issues with other versions)
-    - Build and Run on -> Local Machine
-     - Check Devlopment Build
-    - Click Switch Platform
-  - (Unity Toolbar) Edit -> Project Settings
-    - Click XR Plug-in Management
-    - Click Universal Windows Platform settings tab
-    - Check OpenXR
-    - Check Microsoft HoloLens feature group
-    - Click the Warning Icon -> Click Fix All
-    - Click Windows, Mac, Linux XR Plug-in Management Settings tab
-    - Check OpenXR
-    - Check Microsoft HoloLens feature group
-    - Click the Warning Icon -> Click Fix All
-      - If left with “At least one interaction profile must be added.” -> Click on Edit
-        - (Project Settings -> OpenXR) Click the “+” under Interaction Profiles
-          - Add Eye Gaze Interaction Profile
-            - Add Microsoft Hand Interaction Profile
-    - (Unity Toolbar) Mixed Reality -> Project -> Apply recommended project settings for HoloLens 2
+### 2. Configure Project Settings and Build Settings [(source)](http://www.lancelarsen.com/xr-step-by-step-2023-hololens-2-setting-up-your-project-in-unity-2022-mrtk-2-8-3-visual-studio-2022/):
+
+#### 2.1 Build Settings
+1. On Unity Toolbar, click **File -> Build Settings**
+1. Click Add Open Scenes
+1. Switch Platform to Universal Windows Platform
+1. Target Device -> HoloLens
+1. Apply settings for intended target:
+
+    | Build Settings           | HoloLens 2                        | HoloLens Emulator                               |
+    |--------------------------|-----------------------------------|-------------------------------------------------|
+    | Architecture             | ARM64                             | x64                                             |
+    | Minimum Platform Version | 10.0.18362.0 (or newer)           | 10.0.10586.0 (known issues with other versions) |
+    | Build and Run on         | USB Device (if connected via USB) | Local Machine                                   |
+    | Copy References          | Check on                          | Check off                                       |
+    | Development Build        | Check off                         | Check on                                        |
+
+#### 2.2 Project Settings
+1. On Unity Toolbar, click **Edit -> Project Settings**
+##### 2.2.1 Universal Windows Platform (HoloLens 2 HMD) Configuration
+
+1. Click XR Plug-in Management
+1. Click Universal Windows Platform settings tab
+1. Check OpenXR
+1. Wait for it to load, then check Microsoft HoloLens feature group
+1. Click the Warning Icon `⚠️` next to Open XR to open Project Validation
+1. Click Fix All
+1. If left with “At least one interaction profile must be added.” 
+    1. Click on Edit - (Project Settings -> OpenXR).
+    1. Click the “+” under Interaction Profiles
+    1. Add Eye Gaze Interaction Profile
+    1. Add Microsoft Hand Interaction Profile
+1. Click Project Validation under XR Plug-in Management, and then click Fix All if there are any remaining issues
+1. On Unity Toolbar, click Mixed Reality -> Project -> Apply recommended project settings for HoloLens 2
+
+##### 2.2.2 PC, Mac, Linux, Standalone (HoloLens 2 Emulator) Tab Configuration
+1. Click XR Plug-in Management
+1. Click PC, Mac, Linux, Standalone tab XR Plug-in Management Settings tab
+1. Check OpenXR
+1. If there is an icon `❗` next to OpenXR, click it
+    1. Click Fix All. Unity will need to restart. 
+    1. Go back to XR Plug-in Management tab when Unity reopens.
+1. If left with “At least one interaction profile must be added.” 
+    1. Click on Edit - (Project Settings -> OpenXR).
+    1. Click the “+” under Interaction Profiles
+    1. Add Microsoft Hand Interaction Profile
+1. Click Project Validation under XR Plug-in Management, and then click Fix All if there are any remaining issues
+1. On Unity Toolbar, click Mixed Reality -> Project -> Apply recommended project settings for HoloLens 2
 
 
- ### 2. Adding the EyeTK Unity Package
- Download the repository to your local machine. In a Unity project, select Assets -> Import Package -> Custom Package... and then select EyeTK.unitypackage.
+ ### 3. Adding the EyeTK Unity Package
+ 1. Download or clone the repository to your local machine. 
+ 1. In your Unity project, select Assets -> Import Package -> Custom Package... and then select EyeTK.unitypackage.
+ 1. Click Import
 
  ## Using eye interactions
- - Create an "Editor" folder (if there is not one already) and place the ConditionalHidePropertyDrawers.cs inside there
  - Add the Complete XR Origin Set Up and GazeInteractionManager prefabs to an empty scene. From here, you could build and deploy the project to ensure all settings are configured correctly.
  - To enable gaze interactions on an object and UI
     1. Add the XR Simple Interactable component
