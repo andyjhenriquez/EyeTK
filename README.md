@@ -34,7 +34,7 @@ The Eye Interaction Toolkit is a unity package that provides functionality for e
     | Minimum Platform Version | 10.0.18362.0 (or newer)           | 10.0.10586.0 (known issues with other versions) |
     | Build and Run on         | USB Device (if connected via USB) | Local Machine                                   |
     | Copy References          | Check on                          | Check off                                       |
-    | Development Build        | Check off                         | Check on                                        |
+    | Development Build        | Check on                          | Check on                                        |
 
 #### 2.2 Project Settings
 1. On Unity Toolbar, click **Edit -> Project Settings**
